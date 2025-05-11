@@ -14,7 +14,7 @@ document.getElementById("confess-form").addEventListener("submit", async functio
   data.append("code", code);
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbwUvA-4eHGaZM3Zl8l8ybjC-JNq9IKCo.../exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwUvA-4eHGaZM3Zl8l8ybjC-JNq9IKcoo1AxYBCZtJADbKXisi9HQ6QMHNSBla4Jfw5pw/exec", {
       method: "POST",
       body: data
     });
