@@ -1,24 +1,33 @@
 document.getElementById("confess-form").addEventListener("submit", async function (e) {
   e.preventDefault();
 
-  const data = new FormData(this);
-  const body = {
-    code: "xyz-" + Math.floor(Math.random() * 1000),
-    typ: data.get("type"),
-    religion: data.get("religion"),
-    religion_freitext: data.get("religion_freitext"),
-    nachricht: data.get("nachricht"),
-    bezahlt: data.get("bezahlt") === "on"
-  };
+  const form = e.target;
+  const formData = new FormData(form);
 
-  const response = await fetch("https://script.google.com/macros/s/AKfycbwUvA-4eHGaZM3Zl8l8ybjC-JNq9IKcoo1AxYBCZtJADbKXisi9HQ6QMHNSBla4Jfw5pw/exec", {
-    method: "POST",
-    body: JSON.stringify(body),
-    headers: {
-      "Content-Type": "application/json"
-    }
+  const data = new URLSearchParams();
+  formData.forEach((value, key) => {
+    data.append(key, value);
   });
 
-  const result = await response.json();
-  alert("Danke – dein Code ist: " + result.code);
+  // Zufälliger Code zur Identifikation
+  const code = "code-" + Math.floor(Math.random() * 1000000);
+  data.append("code", code);
+
+  try {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwUvA-4eHGaZM3Zl8l8ybjC-JNq9IKCo.../exec", {
+      method: "POST",
+      body: data
+    });
+
+    const text = await response.text();
+
+    if (text.includes("OK")) {
+      alert("Danke! Dein Code ist: " + code);
+    } else {
+      alert("Es gab ein Problem: " + text);
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Die Verbindung zum Server ist fehlgeschlagen.");
+  }
 });
