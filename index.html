@@ -1,1 +1,55 @@
-<!DOCTYPE html><html><head><title>Verborgene Stimme</title></head><body>Startseite</body></html>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verborgene Stimme</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <script src="scripts/submit.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Verborgene Stimme</h1>
+    <nav>
+      <a href="index.html">Beichte starten</a>
+      <a href="erfahrungen.html">Erfahrungen lesen</a>
+      <a href="antwort.html">Antwort abrufen</a>
+      <select id="language-switcher">
+        <option value="de">🇩🇪 DE</option>
+        <option value="en">🇬🇧 EN</option>
+      </select>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Was möchtest du tun?</h2>
+    <form id="confess-form">
+      <label><input type="radio" name="type" value="gebet" checked> Bitte bete für mich</label><br/>
+      <label><input type="radio" name="type" value="beichte"> Ich möchte etwas beichten</label><br/>
+      <label><input type="radio" name="type" value="hilfe"> Ich wünsche mir Hilfe</label><br/>
+
+      <div id="religion-select" class="form-section">
+        <label>Religion:
+          <select name="religion">
+            <option value="christlich">Christlich</option>
+            <option value="islamisch">Islamisch</option>
+            <option value="jüdisch">Jüdisch</option>
+            <option value="buddhistisch">Buddhistisch</option>
+            <option value="hinduistisch">Hinduistisch</option>
+            <option value="frei">Andere / Freitext</option>
+          </select>
+        </label>
+        <input type="text" name="religion_freitext" placeholder="Eigene spirituelle Richtung (optional)" />
+      </div>
+
+      <textarea name="nachricht" rows="5" placeholder="Deine Nachricht ..."></textarea><br/>
+
+      <label><input type="checkbox" name="bezahlt" /> Ich möchte meine Antwort priorisieren (Bezahlung erforderlich)</label><br/>
+
+      <button type="submit">Einreichen</button>
+    </form>
+
+    <p class="notice">🕒 Deine Nachricht bleibt 20 Tage sichtbar.</p>
+  </main>
+</body>
+</html>
